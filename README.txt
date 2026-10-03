@@ -20,7 +20,7 @@ A PWA must be served over HTTPS (or localhost). Pick one:
 3) Local test: in this folder run  python3 -m http.server 8000  and open http://localhost:8000
 
 Install:
-- Android / desktop Chrome or Edge: "Install app" button in the page, or browser menu -> Install.
+- Android / desktop Chrome or Edge: browser menu -> Install app (or Add to Home screen).
 - iPhone / iPad (Safari): Share -> Add to Home Screen.
 
 After editing index.html, change VERSION in sw.js so phones pick up the new version.

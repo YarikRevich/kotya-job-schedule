@@ -49,7 +49,7 @@ h1{font-size:1.6rem;font-weight:700;letter-spacing:-.01em;margin:0;text-wrap:bal
 .btn:hover{border-color:var(--muted)}
 .btn:disabled{opacity:.5;cursor:default}
 .btn:focus-visible,.tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.btn.primary,#install{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.btn.primary{background:var(--accent);color:var(--bg);border-color:var(--accent)}
 .tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:16px}
 .status{font-size:.78rem;color:var(--muted);flex-basis:100%}
 .panel{margin-top:12px;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:12px;display:grid;gap:8px}
@@ -126,7 +126,6 @@ h1{font-size:1.6rem;font-weight:700;letter-spacing:-.01em;margin:0;text-wrap:bal
       <h1>Kotya's job schedule 🍰</h1>
     </div>
     <div style="display:flex;gap:8px;align-items:center">
-      <button id="install" class="btn" hidden>Install app</button>
     </div>
   </header>
 
@@ -373,10 +372,7 @@ renderAll();wk=defaultWeek();renderWeek();
 if(store.get("kotya-tab")==="month")setTab("month");
 setInterval(()=>{renderWeek()},60000);
 
-/* PWA: install prompt + offline cache (when hosted as its own site over HTTPS) */
-let deferred;
-window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferred=e;$("install").hidden=false});
-$("install").onclick=async()=>{if(!deferred)return;deferred.prompt();await deferred.userChoice;deferred=null;$("install").hidden=true};
+/* PWA: offline cache (when hosted as its own site over HTTPS) */
 if("serviceWorker" in navigator&&window.top===window&&document.querySelector('link[rel="manifest"]')){navigator.serviceWorker.register("sw.js").catch(()=>{})}
 </script>
 
